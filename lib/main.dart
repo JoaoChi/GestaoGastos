@@ -18,8 +18,13 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Primeira versão'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Despesas '),
+      ),
+      body: Center(
+        child: Text("Versao inicial"),
+      ),
     );
   }
 }
