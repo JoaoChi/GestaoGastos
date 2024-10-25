@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestao/components/chart.dart';
 import 'package:gestao/components/transaction_form.dart';
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
@@ -73,6 +74,14 @@ class _HomepageState extends State<Homepage> {
     // ),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
+
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
@@ -111,13 +120,7 @@ class _HomepageState extends State<Homepage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('Grafico'),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_transactions),
           ],
         ),
