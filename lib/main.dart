@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestao/components/transaction_form.dart';
-import 'package:gestao/components/transaction_list.dart';
-import 'package:gestao/models/transaction.dart';
+import 'package:gestao/components/transaction_user.dart';
 
 main() => runApp(ExpenseApp());
 
@@ -17,21 +15,6 @@ class ExpenseApp extends StatelessWidget {
 }
 
 class Homepage extends StatelessWidget {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tenis',
-      value: 310.70,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +31,7 @@ class Homepage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
-            // TransactionList(_transactions),
-            // TransactionForm(),
+            TransactionUser(),
           ],
         ));
   }
