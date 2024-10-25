@@ -5,14 +5,46 @@ import 'components/transaction_list.dart';
 import 'models/transaction.dart';
 import 'dart:math';
 
-main() => runApp(const ExpenseApp());
+main() => runApp(ExpenseApp());
 
 class ExpenseApp extends StatelessWidget {
-  const ExpenseApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final ThemeData tema = ThemeData();
+
     return MaterialApp(
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.indigo,
+          secondary: Colors.green,
+        ),
+        // Definindo o estilo de texto
+        textTheme: tema.textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          titleMedium: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          color: Colors.indigo,
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.green,
+        ),
+      ),
       home: Homepage(),
     );
   }
@@ -51,6 +83,8 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+    Navigator.of(context).pop();
   }
 
   _openTransactionFormModal(BuildContext context) {
