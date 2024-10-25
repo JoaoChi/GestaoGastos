@@ -21,18 +21,20 @@ class Homepage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Despesas '),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('Grafico'),
-                elevation: 5,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  child: Text('Grafico'),
+                  elevation: 5,
+                ),
               ),
-            ),
-            TransactionUser(),
-          ],
+              TransactionUser(),
+            ],
+          ),
         ));
   }
 }
