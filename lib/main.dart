@@ -25,7 +25,7 @@ class ExpenseApp extends StatelessWidget {
             fontFamily: 'OpenSans',
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
           titleMedium: TextStyle(
             fontFamily: 'Roboto',
@@ -60,18 +60,18 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   final List<Transaction> _transactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Novo Tenis',
-    //   value: 310.70,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Conta',
-    //   value: 211.30,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't1',
+      title: 'Novo Tenis',
+      value: 310.70,
+      date: DateTime(2024, 10, 26),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Conta',
+      value: 211.30,
+      date: DateTime(2024, 10, 25),
+    ),
   ];
 
   List<Transaction> get _recentTransactions {
