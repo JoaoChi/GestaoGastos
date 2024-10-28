@@ -59,20 +59,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tenis',
-      value: 310.70,
-      date: DateTime(2024, 10, 26),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta',
-      value: 211.30,
-      date: DateTime(2024, 10, 25),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((tr) {
@@ -82,18 +69,27 @@ class _HomepageState extends State<Homepage> {
     }).toList();
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: date,
     );
+
     setState(() {
       _transactions.add(newTransaction);
     });
 
     Navigator.of(context).pop();
+  }
+
+  _deleteTransaction(String id) {
+    setState(
+      () {
+        _transactions.removeWhere((tr) => tr.id == id);
+      },
+    );
   }
 
   _openTransactionFormModal(BuildContext context) {
@@ -121,7 +117,7 @@ class _HomepageState extends State<Homepage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionList(_transactions),
+            TransactionList(_transactions, _deleteTransaction),
           ],
         ),
       ),
